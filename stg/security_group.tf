@@ -21,7 +21,6 @@ resource "aws_security_group" "bastion" {
     Name = "allow_ssh_stg"
   }
 }
-
 resource "aws_security_group" "db" {
   name        = "db"
   description = "Allow MySQL inbound traffic"
@@ -31,7 +30,7 @@ resource "aws_security_group" "db" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["18.204.231.140/32", "60.38.109.203/32"] //[TODO]ここに<ECSのIPアドレス範囲>を追加する
+    cidr_blocks = ["10.0.1.165/32"]
   }
 
   egress {

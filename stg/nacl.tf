@@ -39,6 +39,29 @@ resource "aws_network_acl_rule" "allow_https_inbound" {
   to_port        = 443
 }
 
+# 新しく追加されるルール
+resource "aws_network_acl_rule" "allow_custom_tcp_inbound" {
+  network_acl_id = aws_network_acl.main.id
+  rule_number    = 400
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 32768
+  to_port        = 61000
+}
+
+resource "aws_network_acl_rule" "allow_custom_tcp_ipv6_inbound" {
+  network_acl_id  = aws_network_acl.main.id
+  rule_number     = 410
+  egress          = false
+  protocol        = "tcp"
+  rule_action     = "allow"
+  ipv6_cidr_block = "::/0"
+  from_port       = 32768
+  to_port         = 61000
+}
+
 resource "aws_network_acl_rule" "allow_all_outbound" {
   network_acl_id = aws_network_acl.main.id
   rule_number    = 100
