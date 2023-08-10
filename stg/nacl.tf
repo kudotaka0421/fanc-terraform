@@ -39,7 +39,6 @@ resource "aws_network_acl_rule" "allow_https_inbound" {
   to_port        = 443
 }
 
-# 新しく追加されるルール
 resource "aws_network_acl_rule" "allow_custom_tcp_inbound" {
   network_acl_id = aws_network_acl.main.id
   rule_number    = 400
@@ -89,4 +88,15 @@ resource "aws_network_acl_association" "c" {
 resource "aws_network_acl_association" "d" {
   subnet_id      = aws_subnet.public_subnet_b.id
   network_acl_id = aws_network_acl.main.id
+}
+
+resource "aws_network_acl_rule" "allow_mysql_inbound" {
+  network_acl_id = aws_network_acl.main.id
+  rule_number    = 500
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 3306
+  to_port        = 3306
 }
