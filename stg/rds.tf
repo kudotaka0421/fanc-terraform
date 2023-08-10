@@ -11,7 +11,7 @@ resource "aws_db_instance" "default" {
   port     = "3306"
 
   vpc_security_group_ids = [aws_security_group.db.id]
-  db_subnet_group_name   = aws_db_subnet_group.main.name
+  db_subnet_group_name   = aws_db_subnet_group.main_stg.name
 
   parameter_group_name = "default.mysql8.0"
 
@@ -29,7 +29,7 @@ resource "aws_db_instance" "default" {
   depends_on = [aws_internet_gateway.stg_igw]
 }
 
-resource "aws_db_subnet_group" "main" {
+resource "aws_db_subnet_group" "main_stg" {
   name       = "main"
   subnet_ids = [aws_subnet.private_subnet_a.id, aws_subnet.private_subnet_b.id]
 
