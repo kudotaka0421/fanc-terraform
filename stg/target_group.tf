@@ -14,6 +14,8 @@ resource "aws_lb_target_group" "fanc_stg" {
     matcher             = "200"
   }
 
+  # [TODO]ECS作成が完了したらターゲットを設定する
+
   tags = {
     Name = "fanc-target-group-stg"
   }
