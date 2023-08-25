@@ -4,6 +4,8 @@ resource "aws_lb_target_group" "fanc_stg" {
   protocol = "HTTP"
   vpc_id   = aws_vpc.stg_vpc.id
 
+  target_type = "ip"
+
   health_check {
     enabled             = true
     interval            = 30
@@ -13,8 +15,6 @@ resource "aws_lb_target_group" "fanc_stg" {
     unhealthy_threshold = 3
     matcher             = "200"
   }
-
-  # [TODO]ECS作成が完了したらターゲットを設定する
 
   tags = {
     Name = "fanc-target-group-stg"
