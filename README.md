@@ -16,6 +16,7 @@
 - IAM
 
 
-## 関連リポジトリ(fanc-api)
+# 関連リポジトリ
 
-## 関連リポジトリ(fanc-front)
+- フロント:https://github.com/kudotaka0421/fanc-front
+- API:https://github.com/kudotaka0421/fanc-api
