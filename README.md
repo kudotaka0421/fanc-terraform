@@ -2,7 +2,7 @@
 
 
 ## 概要
-PitaSchoの顧客管理サービスfancのAWS環境をterraformで管理するリポジトリ
+ [PitaScho](https://pitascho.com/)の管理サービス[fanc](https://fancapp.com/login)のAWS環境をterraformで管理するリポジトリ
 
 ## 使用サービス概要
 
